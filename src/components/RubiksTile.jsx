@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber';
 import { easing } from 'maath';
 import * as THREE from 'three';
 
-export const RubiksTile = ({ position, rotation, tileData, onClick, delayIndex = 0, theme }) => {
+export const RubiksTile = ({ position, rotation, tileData, journalIndex, onClick, delayIndex = 0, theme }) => {
   const meshRef = useRef();
   const [hovered, setHovered] = useState(false);
   const [booted, setBooted] = useState(false);
@@ -103,7 +103,7 @@ export const RubiksTile = ({ position, rotation, tileData, onClick, delayIndex =
           anchorY="middle"
           toneMapped={false}
         >
-          {hovered ? tileData.title.substring(0, 10).toUpperCase() : `SEC_${tileData.id.split('-')[1]}`}
+          {hovered ? tileData.title.substring(0, 10).toUpperCase() : `SEC_${journalIndex}`}
         </Text>
       )}
     </group>

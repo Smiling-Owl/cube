@@ -13,7 +13,8 @@ export const RubiksCube = ({ onTileClick, theme }) => {
       coords.forEach((v, j) => {
         const index = i * 3 + j;
         const id = `${faceName}-${index}`;
-        const tileData = journalData.find((t) => t.id === id);
+        const indexInJournal = journalData.findIndex((t) => t.id === id);
+        const tileData = indexInJournal !== -1 ? journalData[indexInJournal] : undefined;
         
         tiles.push(
           <RubiksTile
@@ -22,6 +23,7 @@ export const RubiksCube = ({ onTileClick, theme }) => {
             position={positionFn(u, v)}
             rotation={rotation}
             tileData={tileData}
+            journalIndex={indexInJournal !== -1 ? indexInJournal + 1 : null}
             onClick={onTileClick}
             theme={theme}
           />
